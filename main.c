@@ -87,7 +87,14 @@ int main() {
     int server = get_server(8000);
     while (1) {
         int client = wait_client(server);
-        handler(client);
+        pid_t pid;
+        if ((pid = fork()) < 0) {
+            exit(-5);
+        } else if (pid == 0) {
+            handler(client);
+            printf("********************handler:%d******************\n", getpid());
+            return 0;
+        }
     }
 }
 
