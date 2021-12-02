@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project(c_test C)
+project(toyhttp C)
 
 set(CMAKE_C_STANDARD 11)
 
