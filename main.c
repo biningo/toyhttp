@@ -53,13 +53,13 @@ void read_line(int client, char *buf) {
 
 void response_ok(int client) {
     char buf[1024];
-    char *data = "<h1>Hello,World</h1>";
+    char *data = "{\"data\":\"ok\"}";
 
     strcpy(buf, "HTTP/1.0 200 OK\r\n");
     send(client, buf, strlen(buf), 0);
     strcpy(buf, "Server: myserver \r\n");
     send(client, buf, strlen(buf), 0);
-    sprintf(buf, "Content-Type: text/html\r\n");
+    sprintf(buf, "Content-Type: application/json\r\n");
     send(client, buf, strlen(buf), 0);
     sprintf(buf, "Content-Length: %d\r\n", (int) strlen(data));
     send(client, buf, strlen(buf), 0);
